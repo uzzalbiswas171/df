@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "169957476530",
+    "project_id": "helppoor-f0215",
+    "storage_bucket": "helppoor-f0215.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:169957476530:android:95de27753a81e0f1ea21ab",
+        "android_client_info": {
+          "package_name": "com.example.untitled"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "169957476530-o3s2v06vbafk9edme2v9fchmh46kfgha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbR1owTrGfOpIbWtxbdtND0lYS2JvfP5Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "169957476530-o3s2v06vbafk9edme2v9fchmh46kfgha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
