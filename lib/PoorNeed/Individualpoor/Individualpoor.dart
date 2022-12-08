@@ -236,7 +236,7 @@ class _Individual_PageState extends State<Individual_Page> {
 
                 child: ListTile(
                   leading: CircleAvatar(
-                    backgroundImage: AssetImage("${widget.img}"),
+                    backgroundImage: NetworkImage("${widget.img}"),
                     radius: 40,
                   ),
                   title: Text("${widget.name}",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w600),),

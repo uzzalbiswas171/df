@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:projectno2/ASDF/asdf.dart';
-import 'package:projectno2/PoorNeed/Afterpoorlogin/afterpoorlogin.dart';
+import 'package:untitled/ASDF/asdf.dart';
+import 'package:untitled/PoorNeed/Afterpoorlogin/afterpoorlogin.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -149,7 +149,7 @@ class _Need_Poor_PageState extends State<Need_Poor_Page> {
     "মানিকগঞ্জ",
 
   ];
-String ? _imageeurl;
+
   XFile ? _courseImage;
   chooseImage()async{
     ImagePicker ? _picker = ImagePicker();
@@ -165,29 +165,55 @@ String ? _imageeurl;
   TextEditingController _aboutyourselfController=TextEditingController();
   TextEditingController _SubdistrictController=TextEditingController();
   String ? district;
+  //
+  // addUser() {
+  //   CollectionReference users = FirebaseFirestore.instance.collection('${district}');
+  //    users.add({
+  //     'name': _nameController.text, // John Doe
+  //     'occupation': _occupationController.text, // Stokes and Sons
+  //     'imonumber': _numberController.text ,// 42
+  //     'district': district,// 42
+  //     'aboutyourself': _aboutyourselfController.text,// 42
+  //     'subdistrict': _aboutyourselfController.text,// 42
+  //
+  //   });
+  // }
+  //
 
 
-      writedata()async{
-        File _imageurl=File(_courseImage!.path);
-        FirebaseStorage _storage=FirebaseStorage.instance;
-        UploadTask _uploadtask=_storage.ref("${district}").child(_courseImage!.path).putFile(_imageurl);
-        TaskSnapshot snapshot=await _uploadtask;
-        _imageeurl=await snapshot.ref.getDownloadURL();
-        addUser();
-      }
+  String? _imageUrl;
 
-  addUser() {
+  writeData() async {
+    File _imageFile = File(_courseImage!.path);
+    FirebaseStorage _storage = FirebaseStorage.instance;
+    UploadTask _uploadTask =
+    _storage.ref("{$district}").child(_courseImage!.name).putFile(_imageFile);
+    TaskSnapshot snapshot = await _uploadTask;
+    _imageUrl = await snapshot.ref.getDownloadURL();
     CollectionReference users = FirebaseFirestore.instance.collection('${district}');
-     users.add({
+    users.add({
       'name': _nameController.text, // John Doe
       'occupation': _occupationController.text, // Stokes and Sons
       'imonumber': _numberController.text ,// 42
       'district': district,// 42
       'aboutyourself': _aboutyourselfController.text,// 42
-      'subdistrict': _aboutyourselfController.text,// 42
+      'subdistrict': _SubdistrictController.text,// 42
+      'img': _imageUrl,
 
     });
   }
+
+
+
+
+
+
+
+
+
+
+
+
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -382,11 +408,6 @@ String ? _imageeurl;
                             district=DistrictListbangla[index];
                           selectedindex=index;
                         });
-                        // showDialog(context: context, builder: (context) {
-                        //   return Dialog(
-                        //     child:Text("you clicked ${DistrictListEnglish[index]} ${[index]}", style: TextStyle(fontSize: 22,fontWeight: FontWeight.w600),textAlign: TextAlign.center,),
-                        //   );
-                        // },);
 
                       },
                       child: Container(
@@ -428,43 +449,12 @@ String ? _imageeurl;
                   ),
                 ),
                 SizedBox(height: 10,),
-                // Center(
-                //   child: Container(
-                //     height: 200,
-                //     width: 300,
-                //     decoration: BoxDecoration(
-                //       color: Colors.pinkAccent[100],
-                //       borderRadius: BorderRadius.circular(22),
-                //     ),
-                //     child: Center(
-                //       child: Column(
-                //         mainAxisAlignment: MainAxisAlignment.center,
-                //         crossAxisAlignment: CrossAxisAlignment.center,
-                //         children: [
-                //           Expanded(
-                //             flex: 2,
-                //             child: Text("Add more picture",style: TextStyle(
-                //               fontSize: 22,fontWeight: FontWeight.w600,
-                //             ),),
-                //           ),
-                //
-                //           Expanded(
-                //               flex: 5,
-                //               child: Container(
-                //
-                //                 child: Icon(Icons.camera_alt_outlined,   color: Colors.limeAccent[100],size: 55,),
-                //               ),
-                //           )
-                //         ],
-                //       ),
-                //     ),
-                //   ),
-                // ),
+     ///////////////////////////////////////////////////////////////////
                 InkWell(
                   onTap: () {
 
                     if (_formKey.currentState!.validate()) {
-                      addUser();
+                      writeData();
                       Navigator.push(context, MaterialPageRoute(builder: (context) => Clickeddistrict_Page(Districtname: '${district}',),));
                     }
 

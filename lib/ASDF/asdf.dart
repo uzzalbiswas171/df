@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:projectno2/PoorNeed/Individualpoor/Individualpoor.dart';
+import 'package:untitled/PoorNeed/Individualpoor/Individualpoor.dart';
 
 class Clickeddistrict_Page extends StatefulWidget {
    Clickeddistrict_Page({Key? key,required this.Districtname}) : super(key: key);
@@ -49,13 +49,11 @@ class _Clickeddistrict_PageState extends State<Clickeddistrict_Page> {
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) =>
                         Individual_Page(
-
-
                           description: data["aboutyourself"],
                           name: data["name"],
                           number: data["imonumber"],
-                          occupation:data["occupation"] ,
-                          img: "Img/poorhelp.jpg",
+                          occupation: data["occupation"] ,
+                          img: data["img"],
 
                     )));
                   },
@@ -90,7 +88,7 @@ class _Clickeddistrict_PageState extends State<Clickeddistrict_Page> {
                                  width: 100,
                                  height: 87,
                                  decoration: BoxDecoration(
-                                   image: DecorationImage(image: AssetImage("Img/poorhelp.jpg"),fit: BoxFit.fill),
+                                   image: DecorationImage(image: NetworkImage(data["img"]),fit: BoxFit.fill),
                                  ),
                                ),
 

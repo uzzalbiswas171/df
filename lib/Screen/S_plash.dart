@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projectno2/Screen/choose.dart';
+import 'package:untitled/Screen/choose.dart';
 
 
 class Splash_Page extends StatefulWidget {

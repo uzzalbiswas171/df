@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:projectno2/ASDF/asdf.dart';
-import 'package:projectno2/Helper/DistrictList/helper_can_see.dart';
+import 'package:untitled/ASDF/asdf.dart';
+import 'package:untitled/Helper/DistrictList/helper_can_see.dart';
 
 class DistrictListPage extends StatefulWidget {
   const DistrictListPage({Key? key}) : super(key: key);

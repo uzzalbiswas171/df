@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projectno2/Helper/DistrictList/districtlis.dart';
+import 'package:untitled/Helper/DistrictList/districtlis.dart';
 
-import 'package:projectno2/PoorNeed/poorneed.dart';
+import 'package:untitled/PoorNeed/poorneed.dart';
 
 class ChoosePage extends StatefulWidget {
   const ChoosePage({Key? key}) : super(key: key);

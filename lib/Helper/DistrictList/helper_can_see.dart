@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:projectno2/PoorNeed/Individualpoor/Individualpoor.dart';
+import 'package:untitled/PoorNeed/Individualpoor/Individualpoor.dart';
 
 class Hepler_Can_See_Page extends StatefulWidget {
   Hepler_Can_See_Page({Key? key,required this.Districtname}) : super(key: key);
@@ -51,7 +51,7 @@ class _Hepler_Can_See_PageState extends State<Hepler_Can_See_Page> {
                           name: data["name"],
                           number: data["imonumber"],
                           occupation:data["occupation"] ,
-                          img: "Img/poorhelp.jpg",
+                          img: data["img"],
                         ),));
                   },
                   child: Container(
@@ -85,7 +85,7 @@ class _Hepler_Can_See_PageState extends State<Hepler_Can_See_Page> {
                                   width: 100,
                                   height: 87,
                                   decoration: BoxDecoration(
-                                    image: DecorationImage(image: AssetImage("Img/poorhelp.jpg"),fit: BoxFit.fill),
+                                    image: DecorationImage(image: NetworkImage(data["img"]),fit: BoxFit.fill),
                                   ),
                                 ),
 
